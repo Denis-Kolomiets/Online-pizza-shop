@@ -4,20 +4,16 @@ const Pagination = ({ setFirstIndex, setLastIndex }) => {
   const clickPaginate = (e) => {
     switch (e) {
       case 1:
-        setFirstIndex(0 * (e - 1))
-        setLastIndex(8 * e)
+        setFirstIndex(0)
+        setLastIndex(4)
         break
       case 2:
-        setFirstIndex(8 * (e - 1))
-        setLastIndex(8 * e)
+        setFirstIndex(4)
+        setLastIndex(8)
         break
       case 3:
-        setFirstIndex(8 * (e - 1))
-        setLastIndex(8 * e)
-        break
-      case 4:
-        setFirstIndex(8 * (e - 1))
-        setLastIndex(8 * e)
+        setFirstIndex(8)
+        setLastIndex(12)
         break
     }
   }
@@ -29,8 +25,8 @@ const Pagination = ({ setFirstIndex, setLastIndex }) => {
         nextLabel=">"
         previousLabel="<"
         onPageChange={(e) => clickPaginate(e.selected + 1)}
-        pageRangeDisplayed={8}
-        pageCount={4}
+        pageRangeDisplayed={4}
+        pageCount={3}
         renderOnZeroPageCount={null}
       />
     </>
