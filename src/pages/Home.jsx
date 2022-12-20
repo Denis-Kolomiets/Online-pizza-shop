@@ -31,13 +31,17 @@ const Home = () => {
   const searchValue = search
   const [firstIndex, setFirstIndex] = useState(0)
   const [lastIndex, setLastIndex] = useState(4)
+  const [numberPages, setNumberPages] = useState(0)
   const location = useLocation()
   const filterPizzas = filterCategories(activeCategori)
   const sortPizzas = sortedPizzas(filterPizzas, sortKey)
-
   useEffect(() => {
     dispatch(fetchPizzas())
   }, [])
+
+  useEffect(() => {
+    setNumberPages(Math.ceil(sortPizzas.length / 4))
+  }, [sortPizzas])
 
   function sortedPizzas(filterPizzas, key) {
     const sortedCourses = [...filterPizzas]
@@ -127,6 +131,7 @@ const Home = () => {
             <Pagination
               setFirstIndex={setFirstIndex}
               setLastIndex={setLastIndex}
+              numberPages={numberPages}
             />
           </>
         )}

@@ -1,6 +1,6 @@
 import style from './Pagination.module.scss'
 import ReactPaginate from 'react-paginate'
-const Pagination = ({ setFirstIndex, setLastIndex }) => {
+const Pagination = ({ setFirstIndex, setLastIndex, numberPages }) => {
   const clickPaginate = (e) => {
     switch (e) {
       case 1:
@@ -26,7 +26,7 @@ const Pagination = ({ setFirstIndex, setLastIndex }) => {
         previousLabel="<"
         onPageChange={(e) => clickPaginate(e.selected + 1)}
         pageRangeDisplayed={4}
-        pageCount={3}
+        pageCount={numberPages}
         renderOnZeroPageCount={null}
       />
     </>
