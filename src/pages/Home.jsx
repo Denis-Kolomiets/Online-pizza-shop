@@ -17,6 +17,7 @@ import { useLocation } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import Loanding from '../components/Loanding'
 import Error from '../components/Error'
+import { Link } from 'react-router-dom'
 
 // import { SearchContext } from '../App'
 
@@ -68,7 +69,11 @@ const Home = () => {
       })
       .slice(firstIndex, lastIndex)
       .map((pizza) => {
-        return <PizzaBlock {...pizza} key={pizza.id} />
+        return (
+          <Link key={pizza.id} to={`pizza/${pizza.id}`}>
+            <PizzaBlock {...pizza} />{' '}
+          </Link>
+        )
       })
   }
 

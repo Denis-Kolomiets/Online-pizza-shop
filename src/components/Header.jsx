@@ -20,7 +20,7 @@ function Header() {
               </div>
             </div>
           </Link>
-          <Search />
+          {query !== '/cart' && <Search />}
           {query !== '/cart' && (
             <div className="header__cart">
               <Link to="/cart" className="button button--cart">
