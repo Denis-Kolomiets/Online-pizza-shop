@@ -69,11 +69,7 @@ const Home = () => {
       })
       .slice(firstIndex, lastIndex)
       .map((pizza) => {
-        return (
-          <Link key={pizza.id} to={`pizza/${pizza.id}`}>
-            <PizzaBlock {...pizza} />{' '}
-          </Link>
-        )
+        return <PizzaBlock {...pizza} key={pizza.id} />
       })
   }
 

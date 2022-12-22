@@ -1,13 +1,19 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import Loanding from '../components/Loanding'
-function findPizza(pizzas, findKey) {
-  const pizza = pizzas.find((obj) => obj.id === Number(findKey))
-  return pizza
-}
+
 const SearchPizzas = () => {
+  function findPizza(pizzas, findKey) {
+    const pizza = pizzas.find((obj) => obj.id === Number(findKey))
+    if (pizza) {
+      return pizza
+    }
+    return navigate('/')
+  }
+
   const params = useParams()
-  const [pizza, setPizza] = useState('')
+  const navigate = useNavigate()
+  const [pizza, setPizza] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,16 +29,7 @@ const SearchPizzas = () => {
     }
     fetchData()
   }, [])
-  // useEffect(() => {
-  //   dispatch(fetchPizzas())
-  // }, [])
-  //   useEffect(() => {
-  //     if (!items.find((obj) => obj.id === Number(findKey))) {
-  //       navigate('.')
-  //       setFindKey(undefined)
-  //       setFindKey(pizza)
-  //     }
-  //   }, [findKey, navigate])
+
   if (!pizza) {
     return <Loanding />
   }
